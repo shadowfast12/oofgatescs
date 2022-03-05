@@ -48,7 +48,7 @@
   <ItemGroup>
     <Compile Include="attributes\fight.cs" />
     <Compile Include="attributes\player.cs" />
-    <Compile Include="attributes\weapon.cs" />
+    <Compile Include="attributes\item.cs" />
     <Compile Include="main\main.cs">
       <SubType>Form</SubType>
     </Compile>

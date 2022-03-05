@@ -20,6 +20,7 @@
             base.Dispose(disposing);
         }
 
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -65,6 +66,7 @@
             // 
             this.event_text.BackColor = System.Drawing.Color.Silver;
             this.event_text.Enabled = false;
+            this.event_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.event_text.Location = new System.Drawing.Point(12, 97);
             this.event_text.Multiline = true;
             this.event_text.Name = "event_text";
@@ -113,7 +115,7 @@
             // 
             // stats_button
             // 
-            this.stats_button.Location = new System.Drawing.Point(381, 345);
+            this.stats_button.Location = new System.Drawing.Point(381, 335);
             this.stats_button.Name = "stats_button";
             this.stats_button.Size = new System.Drawing.Size(117, 50);
             this.stats_button.TabIndex = 7;
@@ -122,7 +124,7 @@
             // 
             // events_button
             // 
-            this.events_button.Location = new System.Drawing.Point(381, 401);
+            this.events_button.Location = new System.Drawing.Point(381, 391);
             this.events_button.Name = "events_button";
             this.events_button.Size = new System.Drawing.Size(117, 50);
             this.events_button.TabIndex = 8;
@@ -131,14 +133,14 @@
             // 
             // settings_button
             // 
-            this.settings_button.Location = new System.Drawing.Point(381, 457);
+            this.settings_button.Location = new System.Drawing.Point(381, 447);
             this.settings_button.Name = "settings_button";
-            this.settings_button.Size = new System.Drawing.Size(117, 22);
+            this.settings_button.Size = new System.Drawing.Size(117, 28);
             this.settings_button.TabIndex = 9;
             this.settings_button.Text = "Settings";
             this.settings_button.UseVisualStyleBackColor = true;
             // 
-            // main
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -155,7 +157,7 @@
             this.Controls.Add(this.subtitle);
             this.Controls.Add(this.title);
             this.ForeColor = System.Drawing.Color.Black;
-            this.Name = "main";
+            this.Name = "Main";
             this.Text = "OofGates";
             this.Load += new System.EventHandler(this.main_Load);
             this.ResumeLayout(false);
@@ -167,14 +169,14 @@
 
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.Label subtitle;
+        private System.Windows.Forms.Button stats_button;
+        private System.Windows.Forms.Button events_button;
+        private System.Windows.Forms.Button settings_button;
         private System.Windows.Forms.TextBox event_text;
         private System.Windows.Forms.Button option1;
         private System.Windows.Forms.Button option2;
         private System.Windows.Forms.Button option3;
         private System.Windows.Forms.Button option4;
-        private System.Windows.Forms.Button stats_button;
-        private System.Windows.Forms.Button events_button;
-        private System.Windows.Forms.Button settings_button;
     }
 }
 

@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace oofgates.attributes
 {
-    internal class weapon
+    internal class item
     {
         private String name;
-        private int damage, speed, weapon_dur;
+        private int damage, speed, durability,armor;
 
-        public weapon(String name,int damage,int speed,int weapon_dur)
+        public item(String name,int damage,int speed,int durability,int armor)
         {
             this.name = name;
             this.damage = damage;
             this.speed = speed;
-            this.weapon_dur = weapon_dur;
+            this.durability = durability;
+            this.armor = armor;
         }
         public String get_name()
         {
@@ -30,9 +31,13 @@ namespace oofgates.attributes
         {
             return speed;
         }
-        public int get_weapon_dur()
+        public int get_durability()
         {
-            return weapon_dur;
+            return durability;
+        }
+        public int get_armor()
+        {
+            return armor;
         }
     }
 }
