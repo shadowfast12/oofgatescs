@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace oofgates.attributes
 {
-    internal class item
+    public class item
     {
         private String name;
         private int damage, speed, durability,armor;

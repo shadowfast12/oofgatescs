@@ -85,10 +85,81 @@ namespace oofgates
 
         private void option1_Click(object sender, EventArgs e)
         {
-            set_option1("JOEEEE");
+            if (curr_event==0)
+            {
+                item rock = new item("Rock", 5, -1, 15, 0);
+                user.set_inventory(rock,0);
+            }
         }
 
         private void main_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void init_stats(player uplayer)
+        {
+            health_label.Text = "Health: "+uplayer.get_health();
+            damage_label.Text = "Damage: "+uplayer.get_damage();
+            armor_label.Text = "Armor: " + uplayer.get_armor();
+            speed_label.Text="Speed: "+uplayer.get_speed();
+            coins_label.Text = "Coins: " + uplayer.get_coins();
+
+            foreach(item it in uplayer.get_inventory())
+            {
+                inventory_info.AppendText(Environment.NewLine + it.get_name());
+            }
+        }
+
+        private void option2_Click(object sender, EventArgs e)
+        {
+            if (curr_event == 0)
+            {
+                item rusty_sword = new item("Rusty Sword", 12, -5, 25, 0);
+                user.set_inventory(rusty_sword,0);
+            }
+        }
+
+        private void option3_Click(object sender, EventArgs e)
+        {
+            if (curr_event == 0)
+            {
+                item dagger = new item("Dagger",8,0,30,0);
+                user.set_inventory(dagger,0);
+            }
+        }
+
+        private void option4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void stats_button_Click(object sender, EventArgs e)
+        {
+            main_panel.Enabled = false;
+            main_panel.Visible = false;
+
+            init_stats(user);
+            info_panel.Visible = true;
+            info_panel.Enabled = true;
+
+        }
+
+        private void armor_label_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void back_button_Click(object sender, EventArgs e)
+        {
+            info_panel.Enabled = false;
+            info_panel.Visible = false;
+
+            main_panel.Enabled = true;
+            main_panel.Visible = true;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }

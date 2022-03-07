@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace oofgates.attributes
 {
-    internal class player
+    public class player
     {
-        int health, damage, armor, level, speed, luck, coins, exp;
+        private String name;
+        private int health, damage, armor, level, speed, luck, coins, exp;
 
         Object[] inventory=new Object[4];
         public player(int health,int damage,int armor,int level,int speed,int luck,int coins)
@@ -21,14 +22,28 @@ namespace oofgates.attributes
             this.luck = luck;
             this.coins = coins;
             exp = 0;
+
+            for(int i = 0; i < inventory.Length; i++)
+            {
+                inventory[i] = new item("Nothing",0,0,0,0);
+            }
         }
-        public player(int health,int damage,int armor,int coins) {
+        public player(String name, int health,int damage,int armor,int coins) {
+            this.name = name;
             this.health = health;
             this.damage = damage;
             this.armor = armor;
             this.coins = coins;
-        }
 
+            for (int i = 0; i < inventory.Length; i++)
+            {
+                inventory[i] = new item("Nothing", 0, 0, 0, 0);
+            }
+        }
+        public void set_name(String name)
+        {
+            this.name = name;
+        }
         public void set_health(int health)
         {
             this.health = health;
@@ -61,15 +76,22 @@ namespace oofgates.attributes
         {
             this.exp=exp;
         }
-        public void set_inventory(Object ob,int point)
+        public void set_inventory(item the_item,int point)
         {
-            inventory[point]=ob;
+            inventory[point] = the_item;
+            set_damage(get_damage()+the_item.get_damage());
+            set_speed(get_speed()+the_item.get_speed());
+            set_armor(get_armor()+the_item.get_armor());
         }
         public void set_inventory(Object[] ob)
         {
             inventory = ob;
         }
 
+        public String get_name()
+        {
+            return name;
+        }
         public int get_health()
         {
             return health;
