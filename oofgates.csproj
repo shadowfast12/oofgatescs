@@ -46,9 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="attributes\fight.cs" />
+    <Compile Include="attributes\ability.cs" />
     <Compile Include="attributes\player.cs" />
     <Compile Include="attributes\item.cs" />
+    <Compile Include="infos\ability_list.cs" />
+    <Compile Include="infos\item_list.cs" />
     <Compile Include="main\main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,8 +84,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="functs\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

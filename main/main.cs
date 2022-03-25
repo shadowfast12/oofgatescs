@@ -1,4 +1,5 @@
 ﻿using oofgates.attributes;
+using oofgates.infos;
 using System;
 using System.Windows.Forms;
 
@@ -9,33 +10,38 @@ namespace oofgates
         private int curr_event;
         private player user;
 
+        internal static ability_list all_abilities = new ability_list("res\\abilities.oof");
+        static item_list all_items = new item_list("res\\items.oof");
         public Main()
         {
             InitializeComponent();
             set(0);
-            user = new player(100,10,2,1,10,5,5);
+            user = new player(100,10,10,5,5,1d,5,5,10);
+
         }
         public Boolean set(int event_num)
         {
             curr_event=event_num;
             if (curr_event==0)
             {
-                set_event_text("You have fallen into the world of oofgates... You find a Rock, Sword, & Dagger. Pick One");
+                set_event_text("You have fallen into the world of OOFGATES... You find a Rock, Sword, & Dagger. Pick One");
                 set_buttons("Rock", "Rusty Sword", "Dagger");
-                return true;
             }
-            if (curr_event == 1)
+            else if (curr_event == 1)
             {
-                set_event_text("A Black Man has approached you with ihs sword drawn and demands that you give him all your money or die!");
+                set_event_text("A Black Man has approached you with his sword drawn and demands that you give him all your money or die!");
                 set_buttons("Attack","Give the Money");
-                return true;
             }
-            if (curr_event==2)
+            else if (curr_event==2)
             {
                 set_event_text("Welcome to Wuhan City, you can go to:");
                 set_buttons("Shop","Forest","Casino","Arena");
             }
-            return false;
+            else
+            {
+                return false;
+            }
+            return true;
         }
         private void set_buttons(string text1,string text2)
         {
@@ -87,8 +93,10 @@ namespace oofgates
         {
             if (curr_event==0)
             {
-                item rock = new item("Rock", 5, -1, 15, 0);
-                user.set_inventory(rock,0);
+                user.set_inventory(all_items.get_item(1),0);
+            }
+            if (curr_event==1)
+            {
             }
         }
 
@@ -100,12 +108,15 @@ namespace oofgates
         private void init_stats(player uplayer)
         {
             health_label.Text = "Health: "+uplayer.get_health();
-            damage_label.Text = "Damage: "+uplayer.get_damage();
-            armor_label.Text = "Armor: " + uplayer.get_armor();
+            ad_label.Text = "AD: "+uplayer.get_ad();
+            ap_label.Text = "AP: " + uplayer.get_ap();
+            ad_resist_label.Text = "AD Resist: " + uplayer.get_ad_resist();
+            ap_resist_label.Text = "AP Resist: " + uplayer.get_ap_resist();
             speed_label.Text="Speed: "+uplayer.get_speed();
             coins_label.Text = "Coins: " + uplayer.get_coins();
 
-            foreach(item it in uplayer.get_inventory())
+            inventory_info.Clear();
+            foreach (item it in uplayer.get_inventory())
             {
                 inventory_info.AppendText(Environment.NewLine + it.get_name());
             }
@@ -115,8 +126,7 @@ namespace oofgates
         {
             if (curr_event == 0)
             {
-                item rusty_sword = new item("Rusty Sword", 12, -5, 25, 0);
-                user.set_inventory(rusty_sword,0);
+                user.set_inventory(all_items.get_item(2),0);
             }
         }
 
@@ -124,8 +134,7 @@ namespace oofgates
         {
             if (curr_event == 0)
             {
-                item dagger = new item("Dagger",8,0,30,0);
-                user.set_inventory(dagger,0);
+                user.set_inventory(all_items.get_item(3),0);
             }
         }
 
@@ -158,8 +167,25 @@ namespace oofgates
             main_panel.Enabled = true;
             main_panel.Visible = true;
         }
-
+        private void update_enemy_energy_bar(int energy,int tot_energy)
+        {
+            curr_energy_bar.SetBounds(0, 0, (int)Math.Floor((double)energy / tot_energy) * 247, 13);
+        }
+        private void update_enemy_health_bar(int health,int tot_health)
+        {
+            enemy_healthbar.SetBounds(0, 0, (int) Math.Floor((double)health / tot_health) * 247, 13);
+        }
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void damage_label_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fight_button_Click(object sender, EventArgs e)
         {
 
         }

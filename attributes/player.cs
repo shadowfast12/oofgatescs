@@ -9,35 +9,39 @@ namespace oofgates.attributes
     public class player
     {
         private String name;
-        private int health, damage, armor, level, speed, luck, coins, exp;
+        private double level;
+        private int health, ad,ap, ad_resist,ap_resist, speed, luck, coins;
 
-        Object[] inventory=new Object[4];
-        public player(int health,int damage,int armor,int level,int speed,int luck,int coins)
+        Object[] inventory=new Object[10];
+        public player(int health,int ad,int ap,int ad_resist,int ap_resist,double level,int speed,int luck,int coins)
         {
             this.health = health;
-            this.damage = damage;
-            this.armor = armor;
+            this.ad = ad;
+            this.ap = ap;
+            this.ad_resist = ad_resist;
+            this.ap_resist= ap_resist;
             this.level = level;
             this.speed = speed;
             this.luck = luck;
             this.coins = coins;
-            exp = 0;
 
             for(int i = 0; i < inventory.Length; i++)
             {
-                inventory[i] = new item("Nothing",0,0,0,0);
+                inventory[i] = new item("Nothing",0,0,0,0,0,0);
             }
         }
-        public player(String name, int health,int damage,int armor,int coins) {
+        public player(String name, int health,int ad,int ap,int ad_resist,int ap_resist,int coins) {
             this.name = name;
             this.health = health;
-            this.damage = damage;
-            this.armor = armor;
+            this.ad = ad;
+            this.ap = ap;
+            this.ad_resist = ad_resist;
+            this.ap_resist = ap_resist;
             this.coins = coins;
 
             for (int i = 0; i < inventory.Length; i++)
             {
-                inventory[i] = new item("Nothing", 0, 0, 0, 0);
+                inventory[i] = new item("Nothing", 0, 0, 0, 0, 0, 0);
             }
         }
         public void set_name(String name)
@@ -48,13 +52,21 @@ namespace oofgates.attributes
         {
             this.health = health;
         }
-        public void set_damage(int damage)
+        public void set_ad(int ad)
         {
-            this.damage = damage;
+            this.ad = ad;
         }
-        public void set_armor(int armor)
+        public void set_ap(int ap)
         {
-            this.armor=armor;
+            this.ap = ap;
+        }
+        public void set_ad_resist(int ad_resist)
+        {
+            this.ad_resist = ad_resist;
+        }
+        public void set_ap_resist(int ap_resist)
+        {
+            this.ap_resist=ap_resist;
         }
         public void set_level(int level)
         {
@@ -72,16 +84,13 @@ namespace oofgates.attributes
         {
             this.coins=coins;
         }
-        public void set_exp(int exp)
+        public void set_inventory(item item,int point)
         {
-            this.exp=exp;
-        }
-        public void set_inventory(item the_item,int point)
-        {
-            inventory[point] = the_item;
-            set_damage(get_damage()+the_item.get_damage());
-            set_speed(get_speed()+the_item.get_speed());
-            set_armor(get_armor()+the_item.get_armor());
+            inventory[point] = item;
+            set_ad(get_ad()+ item.get_ad());
+            set_speed(get_speed()+ item.get_speed());
+            set_ad_resist(get_ad_resist()+ item.get_ad_resist());
+            set_ap_resist(get_ap_resist()+ item.get_ap_resist());
         }
         public void set_inventory(Object[] ob)
         {
@@ -96,15 +105,23 @@ namespace oofgates.attributes
         {
             return health;
         }
-        public int get_damage()
+        public int get_ad()
         {
-            return damage;
+            return ad;
         }
-        public int get_armor()
+        public int get_ap()
         {
-            return armor;
+            return ap;
         }
-        public int get_level()
+        public int get_ad_resist()
+        {
+            return ad_resist;
+        }
+        public int get_ap_resist()
+        {
+            return ap_resist;
+        }
+        public double get_level()
         {
             return level;
         }
@@ -119,10 +136,6 @@ namespace oofgates.attributes
         public int get_coins()
         {
             return coins;
-        }
-        public int get_exp()
-        {
-            return exp;
         }
         public object[] get_inventory()
         {

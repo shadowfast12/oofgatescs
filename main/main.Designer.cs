@@ -29,7 +29,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.title = new System.Windows.Forms.Label();
             this.subtitle = new System.Windows.Forms.Label();
             this.event_text = new System.Windows.Forms.TextBox();
@@ -41,25 +40,34 @@
             this.settings_button = new System.Windows.Forms.Button();
             this.main_panel = new System.Windows.Forms.Panel();
             this.info_panel = new System.Windows.Forms.Panel();
+            this.ap_resist_label = new System.Windows.Forms.Label();
+            this.ap_label = new System.Windows.Forms.Label();
             this.inventory_info = new System.Windows.Forms.TextBox();
             this.coins_label = new System.Windows.Forms.Label();
             this.speed_label = new System.Windows.Forms.Label();
-            this.armor_label = new System.Windows.Forms.Label();
-            this.damage_label = new System.Windows.Forms.Label();
+            this.ad_resist_label = new System.Windows.Forms.Label();
+            this.ad_label = new System.Windows.Forms.Label();
             this.health_label = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.back_button = new System.Windows.Forms.Button();
             this.battle_panel = new System.Windows.Forms.Panel();
-            this.enemy_image = new System.Windows.Forms.PictureBox();
+            this.face_pan = new System.Windows.Forms.Panel();
+            this.fight_button = new System.Windows.Forms.Button();
+            this.enemy_name_label = new System.Windows.Forms.Label();
             this.enemy_tothealth_bar = new System.Windows.Forms.Panel();
             this.enemy_healthbar = new System.Windows.Forms.Panel();
-            this.enemy_name_label = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.enemy_image = new System.Windows.Forms.PictureBox();
+            this.total_energy_bar = new System.Windows.Forms.Panel();
+            this.curr_energy_bar = new System.Windows.Forms.Panel();
+            this.use_item_button = new System.Windows.Forms.Button();
+            this.run_button = new System.Windows.Forms.Button();
             this.main_panel.SuspendLayout();
             this.info_panel.SuspendLayout();
             this.battle_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.enemy_image)).BeginInit();
+            this.face_pan.SuspendLayout();
             this.enemy_tothealth_bar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.enemy_image)).BeginInit();
+            this.total_energy_bar.SuspendLayout();
             this.SuspendLayout();
             // 
             // title
@@ -174,11 +182,13 @@
             // 
             // info_panel
             // 
+            this.info_panel.Controls.Add(this.ap_resist_label);
+            this.info_panel.Controls.Add(this.ap_label);
             this.info_panel.Controls.Add(this.inventory_info);
             this.info_panel.Controls.Add(this.coins_label);
             this.info_panel.Controls.Add(this.speed_label);
-            this.info_panel.Controls.Add(this.armor_label);
-            this.info_panel.Controls.Add(this.damage_label);
+            this.info_panel.Controls.Add(this.ad_resist_label);
+            this.info_panel.Controls.Add(this.ad_label);
             this.info_panel.Controls.Add(this.health_label);
             this.info_panel.Controls.Add(this.label1);
             this.info_panel.Controls.Add(this.back_button);
@@ -188,6 +198,26 @@
             this.info_panel.Size = new System.Drawing.Size(406, 298);
             this.info_panel.TabIndex = 11;
             this.info_panel.Visible = false;
+            // 
+            // ap_resist_label
+            // 
+            this.ap_resist_label.AutoSize = true;
+            this.ap_resist_label.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ap_resist_label.Location = new System.Drawing.Point(10, 200);
+            this.ap_resist_label.Name = "ap_resist_label";
+            this.ap_resist_label.Size = new System.Drawing.Size(132, 19);
+            this.ap_resist_label.TabIndex = 13;
+            this.ap_resist_label.Text = "ap resist info here";
+            // 
+            // ap_label
+            // 
+            this.ap_label.AutoSize = true;
+            this.ap_label.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ap_label.Location = new System.Drawing.Point(10, 148);
+            this.ap_label.Name = "ap_label";
+            this.ap_label.Size = new System.Drawing.Size(90, 19);
+            this.ap_label.TabIndex = 12;
+            this.ap_label.Text = "ap info here";
             // 
             // inventory_info
             // 
@@ -204,7 +234,7 @@
             // 
             this.coins_label.AutoSize = true;
             this.coins_label.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.coins_label.Location = new System.Drawing.Point(10, 216);
+            this.coins_label.Location = new System.Drawing.Point(10, 252);
             this.coins_label.Name = "coins_label";
             this.coins_label.Size = new System.Drawing.Size(105, 19);
             this.coins_label.TabIndex = 6;
@@ -214,32 +244,33 @@
             // 
             this.speed_label.AutoSize = true;
             this.speed_label.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.speed_label.Location = new System.Drawing.Point(10, 186);
+            this.speed_label.Location = new System.Drawing.Point(10, 226);
             this.speed_label.Name = "speed_label";
             this.speed_label.Size = new System.Drawing.Size(114, 19);
             this.speed_label.TabIndex = 7;
             this.speed_label.Text = "speed info here";
             // 
-            // armor_label
+            // ad_resist_label
             // 
-            this.armor_label.AutoSize = true;
-            this.armor_label.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.armor_label.Location = new System.Drawing.Point(10, 156);
-            this.armor_label.Name = "armor_label";
-            this.armor_label.Size = new System.Drawing.Size(116, 19);
-            this.armor_label.TabIndex = 8;
-            this.armor_label.Text = "armor info here";
-            this.armor_label.Click += new System.EventHandler(this.armor_label_Click);
+            this.ad_resist_label.AutoSize = true;
+            this.ad_resist_label.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ad_resist_label.Location = new System.Drawing.Point(10, 174);
+            this.ad_resist_label.Name = "ad_resist_label";
+            this.ad_resist_label.Size = new System.Drawing.Size(132, 19);
+            this.ad_resist_label.TabIndex = 8;
+            this.ad_resist_label.Text = "ad resist info here";
+            this.ad_resist_label.Click += new System.EventHandler(this.armor_label_Click);
             // 
-            // damage_label
+            // ad_label
             // 
-            this.damage_label.AutoSize = true;
-            this.damage_label.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.damage_label.Location = new System.Drawing.Point(10, 126);
-            this.damage_label.Name = "damage_label";
-            this.damage_label.Size = new System.Drawing.Size(126, 19);
-            this.damage_label.TabIndex = 9;
-            this.damage_label.Text = "damage info here";
+            this.ad_label.AutoSize = true;
+            this.ad_label.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ad_label.Location = new System.Drawing.Point(10, 122);
+            this.ad_label.Name = "ad_label";
+            this.ad_label.Size = new System.Drawing.Size(90, 19);
+            this.ad_label.TabIndex = 9;
+            this.ad_label.Text = "ad info here";
+            this.ad_label.Click += new System.EventHandler(this.damage_label_Click);
             // 
             // health_label
             // 
@@ -274,6 +305,8 @@
             // 
             // battle_panel
             // 
+            this.battle_panel.Controls.Add(this.total_energy_bar);
+            this.battle_panel.Controls.Add(this.face_pan);
             this.battle_panel.Controls.Add(this.enemy_name_label);
             this.battle_panel.Controls.Add(this.enemy_tothealth_bar);
             this.battle_panel.Controls.Add(this.enemy_image);
@@ -284,15 +317,36 @@
             this.battle_panel.TabIndex = 11;
             this.battle_panel.Visible = false;
             // 
-            // enemy_image
+            // face_pan
             // 
-            this.enemy_image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.enemy_image.Image = ((System.Drawing.Image)(resources.GetObject("enemy_image.Image")));
-            this.enemy_image.Location = new System.Drawing.Point(282, 13);
-            this.enemy_image.Name = "enemy_image";
-            this.enemy_image.Size = new System.Drawing.Size(184, 170);
-            this.enemy_image.TabIndex = 0;
-            this.enemy_image.TabStop = false;
+            this.face_pan.Controls.Add(this.run_button);
+            this.face_pan.Controls.Add(this.use_item_button);
+            this.face_pan.Controls.Add(this.fight_button);
+            this.face_pan.Location = new System.Drawing.Point(0, 290);
+            this.face_pan.Name = "face_pan";
+            this.face_pan.Size = new System.Drawing.Size(487, 169);
+            this.face_pan.TabIndex = 3;
+            // 
+            // fight_button
+            // 
+            this.fight_button.Location = new System.Drawing.Point(16, 18);
+            this.fight_button.Name = "fight_button";
+            this.fight_button.Size = new System.Drawing.Size(130, 130);
+            this.fight_button.TabIndex = 0;
+            this.fight_button.Text = "Fight";
+            this.fight_button.UseVisualStyleBackColor = true;
+            this.fight_button.Click += new System.EventHandler(this.fight_button_Click);
+            // 
+            // enemy_name_label
+            // 
+            this.enemy_name_label.AutoSize = true;
+            this.enemy_name_label.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.enemy_name_label.Location = new System.Drawing.Point(16, 13);
+            this.enemy_name_label.Name = "enemy_name_label";
+            this.enemy_name_label.Size = new System.Drawing.Size(161, 32);
+            this.enemy_name_label.TabIndex = 2;
+            this.enemy_name_label.Text = "enemy name";
+            this.enemy_name_label.Click += new System.EventHandler(this.label2_Click);
             // 
             // enemy_tothealth_bar
             // 
@@ -306,36 +360,61 @@
             // enemy_healthbar
             // 
             this.enemy_healthbar.BackColor = System.Drawing.Color.SpringGreen;
-            this.enemy_healthbar.Location = new System.Drawing.Point(0, 1);
+            this.enemy_healthbar.Location = new System.Drawing.Point(0, 0);
             this.enemy_healthbar.Name = "enemy_healthbar";
-            this.enemy_healthbar.Size = new System.Drawing.Size(247, 13);
+            this.enemy_healthbar.Size = new System.Drawing.Size(247, 14);
             this.enemy_healthbar.TabIndex = 0;
             // 
-            // enemy_name_label
+            // enemy_image
             // 
-            this.enemy_name_label.AutoSize = true;
-            this.enemy_name_label.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.enemy_name_label.Location = new System.Drawing.Point(16, 13);
-            this.enemy_name_label.Name = "enemy_name_label";
-            this.enemy_name_label.Size = new System.Drawing.Size(161, 32);
-            this.enemy_name_label.TabIndex = 2;
-            this.enemy_name_label.Text = "enemy name";
-            this.enemy_name_label.Click += new System.EventHandler(this.label2_Click);
+            this.enemy_image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.enemy_image.Location = new System.Drawing.Point(282, 13);
+            this.enemy_image.Name = "enemy_image";
+            this.enemy_image.Size = new System.Drawing.Size(184, 170);
+            this.enemy_image.TabIndex = 0;
+            this.enemy_image.TabStop = false;
             // 
-            // panel1
+            // total_energy_bar
             // 
-            this.panel1.Location = new System.Drawing.Point(601, 400);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(487, 169);
-            this.panel1.TabIndex = 3;
+            this.total_energy_bar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.total_energy_bar.Controls.Add(this.curr_energy_bar);
+            this.total_energy_bar.Location = new System.Drawing.Point(16, 84);
+            this.total_energy_bar.Name = "total_energy_bar";
+            this.total_energy_bar.Size = new System.Drawing.Size(247, 7);
+            this.total_energy_bar.TabIndex = 4;
+            // 
+            // curr_energy_bar
+            // 
+            this.curr_energy_bar.BackColor = System.Drawing.Color.Gold;
+            this.curr_energy_bar.Location = new System.Drawing.Point(0, 0);
+            this.curr_energy_bar.Name = "curr_energy_bar";
+            this.curr_energy_bar.Size = new System.Drawing.Size(247, 7);
+            this.curr_energy_bar.TabIndex = 0;
+            // 
+            // use_item_button
+            // 
+            this.use_item_button.Location = new System.Drawing.Point(177, 18);
+            this.use_item_button.Name = "use_item_button";
+            this.use_item_button.Size = new System.Drawing.Size(130, 130);
+            this.use_item_button.TabIndex = 1;
+            this.use_item_button.Text = "Use Item";
+            this.use_item_button.UseVisualStyleBackColor = true;
+            // 
+            // run_button
+            // 
+            this.run_button.Location = new System.Drawing.Point(336, 18);
+            this.run_button.Name = "run_button";
+            this.run_button.Size = new System.Drawing.Size(130, 130);
+            this.run_button.TabIndex = 2;
+            this.run_button.Text = "Run";
+            this.run_button.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1133, 742);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1133, 595);
             this.Controls.Add(this.info_panel);
             this.Controls.Add(this.battle_panel);
             this.Controls.Add(this.main_panel);
@@ -349,8 +428,10 @@
             this.info_panel.PerformLayout();
             this.battle_panel.ResumeLayout(false);
             this.battle_panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.enemy_image)).EndInit();
+            this.face_pan.ResumeLayout(false);
             this.enemy_tothealth_bar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.enemy_image)).EndInit();
+            this.total_energy_bar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -371,8 +452,8 @@
         private System.Windows.Forms.TextBox inventory_info;
         private System.Windows.Forms.Label coins_label;
         private System.Windows.Forms.Label speed_label;
-        private System.Windows.Forms.Label armor_label;
-        private System.Windows.Forms.Label damage_label;
+        private System.Windows.Forms.Label ad_resist_label;
+        private System.Windows.Forms.Label ad_label;
         private System.Windows.Forms.Label health_label;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button back_button;
@@ -381,7 +462,14 @@
         private System.Windows.Forms.Panel enemy_tothealth_bar;
         private System.Windows.Forms.Panel enemy_healthbar;
         private System.Windows.Forms.Label enemy_name_label;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel face_pan;
+        private System.Windows.Forms.Label ap_label;
+        private System.Windows.Forms.Label ap_resist_label;
+        private System.Windows.Forms.Button fight_button;
+        private System.Windows.Forms.Panel total_energy_bar;
+        private System.Windows.Forms.Panel curr_energy_bar;
+        private System.Windows.Forms.Button run_button;
+        private System.Windows.Forms.Button use_item_button;
     }
 }
 
