@@ -10,19 +10,20 @@ namespace oofgates
         private int curr_event;
         private player user;
 
-        internal static ability_list all_abilities = new ability_list("res\\abilities.oof");
-        static item_list all_items = new item_list("res\\items.oof");
+        public static ability_list all_abilities = new ability_list("res\\abilities.oof");
+        public static item_list all_items = new item_list("res\\items.oof");
+        public static players_list all_players = new players_list("res\\players.oof");
         public Main()
         {
             InitializeComponent();
             set(0);
-            user = new player(100,10,10,5,5,1d,5,5,10);
+            user = all_players.get_player(1);
 
         }
         public Boolean set(int event_num)
         {
-            curr_event=event_num;
-            if (curr_event==0)
+            curr_event = event_num;
+            if (curr_event == 0)
             {
                 set_event_text("You have fallen into the world of OOFGATES... You find a Rock, Sword, & Dagger. Pick One");
                 set_buttons("Rock", "Rusty Sword", "Dagger");
@@ -30,12 +31,12 @@ namespace oofgates
             else if (curr_event == 1)
             {
                 set_event_text("A Black Man has approached you with his sword drawn and demands that you give him all your money or die!");
-                set_buttons("Attack","Give the Money");
+                set_buttons("Attack", "Give the Money");
             }
-            else if (curr_event==2)
+            else if (curr_event == 2)
             {
                 set_event_text("Welcome to Wuhan City, you can go to:");
-                set_buttons("Shop","Forest","Casino","Arena");
+                set_buttons("Shop", "Forest", "Casino", "Arena");
             }
             else
             {
@@ -43,42 +44,44 @@ namespace oofgates
             }
             return true;
         }
-        private void set_buttons(string text1,string text2)
+        private void set_buttons(string text1, string text2)
         {
             option1.Visible = true;
             option2.Visible = true;
+            option3.Visible = false;
+            option4.Visible = false;
 
             option1.Text = text1;
             option2.Text = text2;
         }
-        private void set_buttons(string text1,string text2,string text3)
+        private void set_buttons(string text1, string text2, string text3)
         {
             option1.Visible = true;
             option2.Visible = true;
             option3.Visible = true;
 
-            option1.Text= text1;
-            option2.Text= text2;
-            option3.Text= text3;
-            option4.Visible= false;
-        }
-        private void set_buttons(string text1,string text2,string text3,string text4)
-        {
-            option1.Visible= true;
-            option2.Visible= true;
-            option3.Visible= true;
-            option4.Visible= true;
-
-            option1.Text=text1;
-            option2.Text= text2;
+            option1.Text = text1;
+            option2.Text = text2;
             option3.Text = text3;
-            option4.Text= text4;
+            option4.Visible = false;
+        }
+        private void set_buttons(string text1, string text2, string text3, string text4)
+        {
+            option1.Visible = true;
+            option2.Visible = true;
+            option3.Visible = true;
+            option4.Visible = true;
+
+            option1.Text = text1;
+            option2.Text = text2;
+            option3.Text = text3;
+            option4.Text = text4;
         }
         private void set_event_text(string text)
         {
             event_text.Text = text;
         }
-        
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -91,12 +94,14 @@ namespace oofgates
 
         private void option1_Click(object sender, EventArgs e)
         {
-            if (curr_event==0)
+            if (curr_event == 0)
             {
-                user.set_inventory(all_items.get_item(1),0);
+                user.set_inventory(all_items.get_item(2), 0);
+                set(1);
             }
-            if (curr_event==1)
+            if (curr_event == 1)
             {
+                battle bman_fight = new battle(user,all_players.get_player(0));
             }
         }
 
@@ -107,12 +112,12 @@ namespace oofgates
 
         private void init_stats(player uplayer)
         {
-            health_label.Text = "Health: "+uplayer.get_health();
-            ad_label.Text = "AD: "+uplayer.get_ad();
+            health_label.Text = "Health: " + uplayer.get_health();
+            ad_label.Text = "AD: " + uplayer.get_ad();
             ap_label.Text = "AP: " + uplayer.get_ap();
             ad_resist_label.Text = "AD Resist: " + uplayer.get_ad_resist();
             ap_resist_label.Text = "AP Resist: " + uplayer.get_ap_resist();
-            speed_label.Text="Speed: "+uplayer.get_speed();
+            speed_label.Text = "Speed: " + uplayer.get_speed();
             coins_label.Text = "Coins: " + uplayer.get_coins();
 
             inventory_info.Clear();
@@ -126,7 +131,8 @@ namespace oofgates
         {
             if (curr_event == 0)
             {
-                user.set_inventory(all_items.get_item(2),0);
+                user.set_inventory(all_items.get_item(3), 0);
+                set(1);
             }
         }
 
@@ -134,7 +140,8 @@ namespace oofgates
         {
             if (curr_event == 0)
             {
-                user.set_inventory(all_items.get_item(3),0);
+                user.set_inventory(all_items.get_item(4), 0);
+                set(1);
             }
         }
 
@@ -167,13 +174,13 @@ namespace oofgates
             main_panel.Enabled = true;
             main_panel.Visible = true;
         }
-        private void update_enemy_energy_bar(int energy,int tot_energy)
+        private void update_enemy_energy_bar(int energy, int tot_energy)
         {
             curr_energy_bar.SetBounds(0, 0, (int)Math.Floor((double)energy / tot_energy) * 247, 13);
         }
-        private void update_enemy_health_bar(int health,int tot_health)
+        private void update_enemy_health_bar(int health, int tot_health)
         {
-            enemy_healthbar.SetBounds(0, 0, (int) Math.Floor((double)health / tot_health) * 247, 13);
+            enemy_healthbar.SetBounds(0, 0, (int)Math.Floor((double)health / tot_health) * 247, 13);
         }
         private void label2_Click(object sender, EventArgs e)
         {
@@ -186,6 +193,16 @@ namespace oofgates
         }
 
         private void fight_button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void f_button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void f_button3_Click(object sender, EventArgs e)
         {
 
         }

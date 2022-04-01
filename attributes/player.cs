@@ -10,38 +10,27 @@ namespace oofgates.attributes
     {
         private String name;
         private double level;
-        private int health, ad,ap, ad_resist,ap_resist, speed, luck, coins;
+        private int health, ad, ap, ad_resist, ap_resist, speed, luck, coins, energy;
 
-        Object[] inventory=new Object[10];
-        public player(int health,int ad,int ap,int ad_resist,int ap_resist,double level,int speed,int luck,int coins)
+        item[] inventory = new item[3];
+        public player(String name,int health, int ad, int ap, int ad_resist, int ap_resist, double level,
+            int speed, int luck, int coins, int energy,item[] inventory)
         {
-            this.health = health;
-            this.ad = ad;
-            this.ap = ap;
-            this.ad_resist = ad_resist;
-            this.ap_resist= ap_resist;
-            this.level = level;
-            this.speed = speed;
-            this.luck = luck;
-            this.coins = coins;
-
-            for(int i = 0; i < inventory.Length; i++)
-            {
-                inventory[i] = new item("Nothing",0,0,0,0,0,0);
-            }
-        }
-        public player(String name, int health,int ad,int ap,int ad_resist,int ap_resist,int coins) {
             this.name = name;
             this.health = health;
             this.ad = ad;
             this.ap = ap;
             this.ad_resist = ad_resist;
             this.ap_resist = ap_resist;
+            this.level = level;
+            this.speed = speed;
+            this.luck = luck;
             this.coins = coins;
+            this.energy = energy;
 
-            for (int i = 0; i < inventory.Length; i++)
+            for(int i=0;i<=this.inventory.Length-1;i++)
             {
-                inventory[i] = new item("Nothing", 0, 0, 0, 0, 0, 0);
+                set_inventory(inventory[i],i);
             }
         }
         public void set_name(String name)
@@ -66,35 +55,39 @@ namespace oofgates.attributes
         }
         public void set_ap_resist(int ap_resist)
         {
-            this.ap_resist=ap_resist;
+            this.ap_resist = ap_resist;
         }
         public void set_level(int level)
         {
-            this.level=level;
+            this.level = level;
         }
         public void set_speed(int speed)
         {
-            this.speed=speed;
+            this.speed = speed;
         }
         public void set_luck(int luck)
         {
-            this.luck=luck;
+            this.luck = luck;
         }
         public void set_coins(int coins)
         {
-            this.coins=coins;
+            this.coins = coins;
         }
-        public void set_inventory(item item,int point)
+        public void set_energy(int energy)
+        {
+            this.energy = energy;
+        }
+        public void set_inventory(item item, int point)
         {
             inventory[point] = item;
-            set_ad(get_ad()+ item.get_ad());
-            set_speed(get_speed()+ item.get_speed());
-            set_ad_resist(get_ad_resist()+ item.get_ad_resist());
-            set_ap_resist(get_ap_resist()+ item.get_ap_resist());
+            set_ad(get_ad() + item.get_ad());
+            set_speed(get_speed() + item.get_speed());
+            set_ad_resist(get_ad_resist() + item.get_ad_resist());
+            set_ap_resist(get_ap_resist() + item.get_ap_resist());
         }
-        public void set_inventory(Object[] ob)
+        public void set_inventory(item[] items)
         {
-            inventory = ob;
+            inventory = items;
         }
 
         public String get_name()
@@ -132,6 +125,10 @@ namespace oofgates.attributes
         public int get_luck()
         {
             return luck;
+        }
+        public int get_energy()
+        {
+            return energy;
         }
         public int get_coins()
         {

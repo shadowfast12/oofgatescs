@@ -51,23 +51,23 @@
             this.label1 = new System.Windows.Forms.Label();
             this.back_button = new System.Windows.Forms.Button();
             this.battle_panel = new System.Windows.Forms.Panel();
+            this.total_energy_bar = new System.Windows.Forms.Panel();
+            this.curr_energy_bar = new System.Windows.Forms.Panel();
             this.face_pan = new System.Windows.Forms.Panel();
-            this.fight_button = new System.Windows.Forms.Button();
+            this.f_button2 = new System.Windows.Forms.Button();
+            this.f_button1 = new System.Windows.Forms.Button();
             this.enemy_name_label = new System.Windows.Forms.Label();
             this.enemy_tothealth_bar = new System.Windows.Forms.Panel();
             this.enemy_healthbar = new System.Windows.Forms.Panel();
             this.enemy_image = new System.Windows.Forms.PictureBox();
-            this.total_energy_bar = new System.Windows.Forms.Panel();
-            this.curr_energy_bar = new System.Windows.Forms.Panel();
-            this.use_item_button = new System.Windows.Forms.Button();
-            this.run_button = new System.Windows.Forms.Button();
+            this.f_button3 = new System.Windows.Forms.Button();
             this.main_panel.SuspendLayout();
             this.info_panel.SuspendLayout();
             this.battle_panel.SuspendLayout();
+            this.total_energy_bar.SuspendLayout();
             this.face_pan.SuspendLayout();
             this.enemy_tothealth_bar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.enemy_image)).BeginInit();
-            this.total_energy_bar.SuspendLayout();
             this.SuspendLayout();
             // 
             // title
@@ -317,31 +317,58 @@
             this.battle_panel.TabIndex = 11;
             this.battle_panel.Visible = false;
             // 
+            // total_energy_bar
+            // 
+            this.total_energy_bar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.total_energy_bar.Controls.Add(this.curr_energy_bar);
+            this.total_energy_bar.Location = new System.Drawing.Point(66, 83);
+            this.total_energy_bar.Name = "total_energy_bar";
+            this.total_energy_bar.Size = new System.Drawing.Size(247, 7);
+            this.total_energy_bar.TabIndex = 4;
+            // 
+            // curr_energy_bar
+            // 
+            this.curr_energy_bar.BackColor = System.Drawing.Color.Gold;
+            this.curr_energy_bar.Location = new System.Drawing.Point(0, 0);
+            this.curr_energy_bar.Name = "curr_energy_bar";
+            this.curr_energy_bar.Size = new System.Drawing.Size(247, 7);
+            this.curr_energy_bar.TabIndex = 0;
+            // 
             // face_pan
             // 
-            this.face_pan.Controls.Add(this.run_button);
-            this.face_pan.Controls.Add(this.use_item_button);
-            this.face_pan.Controls.Add(this.fight_button);
+            this.face_pan.Controls.Add(this.f_button3);
+            this.face_pan.Controls.Add(this.f_button2);
+            this.face_pan.Controls.Add(this.f_button1);
             this.face_pan.Location = new System.Drawing.Point(0, 290);
             this.face_pan.Name = "face_pan";
             this.face_pan.Size = new System.Drawing.Size(487, 169);
             this.face_pan.TabIndex = 3;
             // 
-            // fight_button
+            // f_button2
             // 
-            this.fight_button.Location = new System.Drawing.Point(16, 18);
-            this.fight_button.Name = "fight_button";
-            this.fight_button.Size = new System.Drawing.Size(130, 130);
-            this.fight_button.TabIndex = 0;
-            this.fight_button.Text = "Fight";
-            this.fight_button.UseVisualStyleBackColor = true;
-            this.fight_button.Click += new System.EventHandler(this.fight_button_Click);
+            this.f_button2.Location = new System.Drawing.Point(183, 18);
+            this.f_button2.Name = "f_button2";
+            this.f_button2.Size = new System.Drawing.Size(124, 130);
+            this.f_button2.TabIndex = 1;
+            this.f_button2.Text = "Use Item";
+            this.f_button2.UseVisualStyleBackColor = true;
+            this.f_button2.Click += new System.EventHandler(this.f_button2_Click);
+            // 
+            // f_button1
+            // 
+            this.f_button1.Location = new System.Drawing.Point(22, 18);
+            this.f_button1.Name = "f_button1";
+            this.f_button1.Size = new System.Drawing.Size(124, 130);
+            this.f_button1.TabIndex = 0;
+            this.f_button1.Text = "Fight";
+            this.f_button1.UseVisualStyleBackColor = true;
+            this.f_button1.Click += new System.EventHandler(this.fight_button_Click);
             // 
             // enemy_name_label
             // 
             this.enemy_name_label.AutoSize = true;
             this.enemy_name_label.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.enemy_name_label.Location = new System.Drawing.Point(16, 13);
+            this.enemy_name_label.Location = new System.Drawing.Point(66, 12);
             this.enemy_name_label.Name = "enemy_name_label";
             this.enemy_name_label.Size = new System.Drawing.Size(161, 32);
             this.enemy_name_label.TabIndex = 2;
@@ -352,7 +379,7 @@
             // 
             this.enemy_tothealth_bar.BackColor = System.Drawing.Color.WhiteSmoke;
             this.enemy_tothealth_bar.Controls.Add(this.enemy_healthbar);
-            this.enemy_tothealth_bar.Location = new System.Drawing.Point(16, 70);
+            this.enemy_tothealth_bar.Location = new System.Drawing.Point(66, 69);
             this.enemy_tothealth_bar.Name = "enemy_tothealth_bar";
             this.enemy_tothealth_bar.Size = new System.Drawing.Size(247, 14);
             this.enemy_tothealth_bar.TabIndex = 1;
@@ -368,46 +395,21 @@
             // enemy_image
             // 
             this.enemy_image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.enemy_image.Location = new System.Drawing.Point(282, 13);
+            this.enemy_image.Location = new System.Drawing.Point(321, 12);
             this.enemy_image.Name = "enemy_image";
-            this.enemy_image.Size = new System.Drawing.Size(184, 170);
+            this.enemy_image.Size = new System.Drawing.Size(145, 145);
             this.enemy_image.TabIndex = 0;
             this.enemy_image.TabStop = false;
             // 
-            // total_energy_bar
+            // f_button3
             // 
-            this.total_energy_bar.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.total_energy_bar.Controls.Add(this.curr_energy_bar);
-            this.total_energy_bar.Location = new System.Drawing.Point(16, 84);
-            this.total_energy_bar.Name = "total_energy_bar";
-            this.total_energy_bar.Size = new System.Drawing.Size(247, 7);
-            this.total_energy_bar.TabIndex = 4;
-            // 
-            // curr_energy_bar
-            // 
-            this.curr_energy_bar.BackColor = System.Drawing.Color.Gold;
-            this.curr_energy_bar.Location = new System.Drawing.Point(0, 0);
-            this.curr_energy_bar.Name = "curr_energy_bar";
-            this.curr_energy_bar.Size = new System.Drawing.Size(247, 7);
-            this.curr_energy_bar.TabIndex = 0;
-            // 
-            // use_item_button
-            // 
-            this.use_item_button.Location = new System.Drawing.Point(177, 18);
-            this.use_item_button.Name = "use_item_button";
-            this.use_item_button.Size = new System.Drawing.Size(130, 130);
-            this.use_item_button.TabIndex = 1;
-            this.use_item_button.Text = "Use Item";
-            this.use_item_button.UseVisualStyleBackColor = true;
-            // 
-            // run_button
-            // 
-            this.run_button.Location = new System.Drawing.Point(336, 18);
-            this.run_button.Name = "run_button";
-            this.run_button.Size = new System.Drawing.Size(130, 130);
-            this.run_button.TabIndex = 2;
-            this.run_button.Text = "Run";
-            this.run_button.UseVisualStyleBackColor = true;
+            this.f_button3.Location = new System.Drawing.Point(342, 18);
+            this.f_button3.Name = "f_button3";
+            this.f_button3.Size = new System.Drawing.Size(124, 130);
+            this.f_button3.TabIndex = 2;
+            this.f_button3.Text = "Run";
+            this.f_button3.UseVisualStyleBackColor = true;
+            this.f_button3.Click += new System.EventHandler(this.f_button3_Click);
             // 
             // Main
             // 
@@ -428,10 +430,10 @@
             this.info_panel.PerformLayout();
             this.battle_panel.ResumeLayout(false);
             this.battle_panel.PerformLayout();
+            this.total_energy_bar.ResumeLayout(false);
             this.face_pan.ResumeLayout(false);
             this.enemy_tothealth_bar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.enemy_image)).EndInit();
-            this.total_energy_bar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -465,11 +467,11 @@
         private System.Windows.Forms.Panel face_pan;
         private System.Windows.Forms.Label ap_label;
         private System.Windows.Forms.Label ap_resist_label;
-        private System.Windows.Forms.Button fight_button;
+        private System.Windows.Forms.Button f_button1;
         private System.Windows.Forms.Panel total_energy_bar;
         private System.Windows.Forms.Panel curr_energy_bar;
-        private System.Windows.Forms.Button run_button;
-        private System.Windows.Forms.Button use_item_button;
+        private System.Windows.Forms.Button f_button2;
+        private System.Windows.Forms.Button f_button3;
     }
 }
 

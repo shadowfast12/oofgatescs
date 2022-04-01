@@ -10,27 +10,18 @@ namespace oofgates.attributes
     {
         private String name;
         private int ap,ad, speed,durability,ad_resist,ap_resist;
-        private Object[] abilities;
+        private ability ability;
 
-        public item(String name,int ad,int ap, int speed,int durability,int ad_resist,int ap_resist,Object[] abilities)
-        {
-            this.name = name;
-            this.ad = ap;
-            this.speed = speed;
-            this.durability = durability;
-            this.ad_resist = ad_resist;
-            this.ap_resist = ap_resist;
-            this.abilities = abilities;
-        }
-        public item(String name, int ad,int ap, int speed, int durability, int ad_resist, int ap_resist)
+        public item(String name,int ad,int ap, int speed,int durability,int ad_resist,int ap_resist,ability ability)
         {
             this.name = name;
             this.ad = ad;
-            this.ap=ap;
+            this.ap = ap;
             this.speed = speed;
             this.durability = durability;
             this.ad_resist = ad_resist;
             this.ap_resist = ap_resist;
+            this.ability = ability;
         }
         public void set_ad(int ad)
         {
@@ -40,14 +31,18 @@ namespace oofgates.attributes
         {
             this.ap= ap;
         }
-        public void set_ability(ability ability,int num)
+        public void set_durability(int durability)
         {
-            this.abilities[num] = ability;
+            this.durability=durability;
+        }
+        public void set_ability(ability ability)
+        {
+            this.ability = ability;
         }
         
-        public ability get_ability(int num)
+        public ability get_ability()
         {
-            return (ability)abilities[num];
+            return ability;
         }
         public String get_name()
         {

@@ -47,10 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="attributes\ability.cs" />
+    <Compile Include="attributes\battle.cs" />
     <Compile Include="attributes\player.cs" />
     <Compile Include="attributes\item.cs" />
     <Compile Include="infos\ability_list.cs" />
     <Compile Include="infos\item_list.cs" />
+    <Compile Include="infos\players_list.cs" />
     <Compile Include="main\main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +86,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
