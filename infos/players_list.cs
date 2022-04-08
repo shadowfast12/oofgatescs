@@ -20,8 +20,9 @@ namespace oofgates.infos
             int num = 0;
             foreach (String it in System.IO.File.ReadLines(file))
             {
-                if (it.Equals("#"))
+                if (it.Contains("#"))
                 {
+
                     players.Add(num, new player((String)info[0],int.Parse((String)info[1]), int.Parse((String)info[2]),
                         int.Parse((String)info[3]), int.Parse((String)info[4]), int.Parse((String)info[5]),
                         int.Parse((String)info[6]), int.Parse((String)info[7]),int.Parse((String)info[8]),

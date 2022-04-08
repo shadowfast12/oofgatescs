@@ -8,69 +8,50 @@ namespace oofgates.attributes
 {
     public class item
     {
-        private String name;
-        private int ap,ad, speed,durability,ad_resist,ap_resist;
-        private ability ability;
+        public String Name
+        {
+            get; set;
+        }
+        public int Ad
+        {
+            get; set;
+        }
+        public int Ap
+        {
+            get; set;
+        }
+        public int Speed
+        {
+            get; set;
+        }
+        public int Durability
+        {
+            get; set;
+        }
+        public int Ad_resist
+        {
+            get; set;
+        }
+        public int Ap_resist
+        {
+            get; set;
+        }
+        public ability Ability
+        {
+            get; set;
+        }
 
-        public item(String name,int ad,int ap, int speed,int durability,int ad_resist,int ap_resist,ability ability)
+        public item(String Name, int Ad, int Ap, int Speed, int Durability, int Ad_resist, int Ap_resist, ability Ability)
         {
-            this.name = name;
-            this.ad = ad;
-            this.ap = ap;
-            this.speed = speed;
-            this.durability = durability;
-            this.ad_resist = ad_resist;
-            this.ap_resist = ap_resist;
-            this.ability = ability;
+            this.Name = Name;
+            this.Ad = Ad;
+            this.Ap = Ap;
+            this.Speed = Speed;
+            this.Durability = Durability;
+            this.Ad_resist = Ad_resist;
+            this.Ap_resist = Ap_resist;
+            this.Ability = Ability;
         }
-        public void set_ad(int ad)
-        {
-            this.ad=ad;
-        }
-        public void set_ap(int ap)
-        {
-            this.ap= ap;
-        }
-        public void set_durability(int durability)
-        {
-            this.durability=durability;
-        }
-        public void set_ability(ability ability)
-        {
-            this.ability = ability;
-        }
-        
-        public ability get_ability()
-        {
-            return ability;
-        }
-        public String get_name()
-        {
-            return name;
-        }
-        public int get_ad()
-        {
-            return ad;
-        }
-        public int get_ap()
-        {
-            return ap;
-        }
-        public int get_speed()
-        {
-            return speed;
-        }
-        public int get_durability()
-        {
-            return durability;
-        }
-        public int get_ad_resist()
-        {
-            return ad_resist;
-        }
-        public int get_ap_resist()
-        {
-            return ap_resist;
-        }
+
     }
 }

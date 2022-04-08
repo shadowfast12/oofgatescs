@@ -25,18 +25,18 @@ namespace oofgates
             curr_event = event_num;
             if (curr_event == 0)
             {
-                set_event_text("You have fallen into the world of OOFGATES... You find a Rock, Sword, & Dagger. Pick One");
-                set_buttons("Rock", "Rusty Sword", "Dagger");
+                event_text.Text=("You have fallen into the world of OOFGATES... You find a Rock, Sword, & Dagger. Pick One");
+                set_buttons(new Button[]{ option4},new Button[] { option1,option2,option3},new string[] {"ROCK","Rusty Sword","Dagger"});
             }
             else if (curr_event == 1)
             {
-                set_event_text("A Black Man has approached you with his sword drawn and demands that you give him all your money or die!");
-                set_buttons("Attack", "Give the Money");
+                event_text.Text = ("A Black Man has approached you with his sword drawn and demands that you give him all your money or die!");
+                set_buttons(new Button[] { option3,option4},new Button[] { option1,option2},new string[] {"Attack","Give the Money"});
             }
             else if (curr_event == 2)
             {
-                set_event_text("Welcome to Wuhan City, you can go to:");
-                set_buttons("Shop", "Forest", "Casino", "Arena");
+                event_text.Text = ("Welcome to Wuhan City, you can go to:");
+                set_buttons(new Button[] { },new Button[] { option1,option2,option3},new string[] {"Shop","Forest","Casino","Arena"});
             }
             else
             {
@@ -44,59 +44,24 @@ namespace oofgates
             }
             return true;
         }
-        private void set_buttons(string text1, string text2)
+        private void set_buttons(Button[] inactive_buttons,Button[] active_buttons,string[] texts)
         {
-            option1.Visible = true;
-            option2.Visible = true;
-            option3.Visible = false;
-            option4.Visible = false;
-
-            option1.Text = text1;
-            option2.Text = text2;
-        }
-        private void set_buttons(string text1, string text2, string text3)
-        {
-            option1.Visible = true;
-            option2.Visible = true;
-            option3.Visible = true;
-
-            option1.Text = text1;
-            option2.Text = text2;
-            option3.Text = text3;
-            option4.Visible = false;
-        }
-        private void set_buttons(string text1, string text2, string text3, string text4)
-        {
-            option1.Visible = true;
-            option2.Visible = true;
-            option3.Visible = true;
-            option4.Visible = true;
-
-            option1.Text = text1;
-            option2.Text = text2;
-            option3.Text = text3;
-            option4.Text = text4;
-        }
-        private void set_event_text(string text)
-        {
-            event_text.Text = text;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void event_text_TextChanged(object sender, EventArgs e)
-        {
-
+            for (int i = 0; i < active_buttons.Length; i++)
+            {
+                active_buttons[i].Text = texts[i]; 
+                active_buttons[i].Visible=true;
+            }
+            for (int i=0;i<inactive_buttons.Length;i++)
+            {
+                inactive_buttons[i].Visible = false;
+            }
         }
 
         private void option1_Click(object sender, EventArgs e)
         {
             if (curr_event == 0)
             {
-                user.set_inventory(all_items.get_item(2), 0);
+                user.set_inventory(all_items.get_item(1), 0);
                 set(1);
             }
             if (curr_event == 1)
@@ -105,33 +70,41 @@ namespace oofgates
             }
         }
 
-        private void main_Load(object sender, EventArgs e)
+        public void set_text_box(TextBox textBox,String[] contam)
         {
-
+            textBox.Clear();
+            foreach(String str in contam){
+                textBox.AppendText(str+Environment.NewLine);
+            }
         }
 
-        private void init_stats(player uplayer)
+        private void init_stats(player player)
         {
-            health_label.Text = "Health: " + uplayer.get_health();
-            ad_label.Text = "AD: " + uplayer.get_ad();
-            ap_label.Text = "AP: " + uplayer.get_ap();
-            ad_resist_label.Text = "AD Resist: " + uplayer.get_ad_resist();
-            ap_resist_label.Text = "AP Resist: " + uplayer.get_ap_resist();
-            speed_label.Text = "Speed: " + uplayer.get_speed();
-            coins_label.Text = "Coins: " + uplayer.get_coins();
+            set_text_box(stats_text_box,new string[] {
+                "Health: "+player.Health,"AD: "+player.Ad,"AP: "+player.Ap,
+                "AD Resist: "+player.Ad,"AP Resist:"+player.Ap_resist,
+                "Speed: "+player.Speed,"Coins"+player.Coins});
 
             inventory_info.Clear();
-            foreach (item it in uplayer.get_inventory())
+            foreach (item it in player.get_inventory())
             {
-                inventory_info.AppendText(Environment.NewLine + it.get_name());
+                inventory_info.AppendText(Environment.NewLine + it.Name);
             }
+        }
+        private void init_item_info(object sender, item item)
+        {
+            item_overview_panel.Visible = true;
+            set_text_box(item_overview_textbox,new string[] {
+            "Name: "+item.Name,"AD: "+item.Ad,"AP: "+item.Ap,"AD Resist: "+item.Ad,
+            "AP Resist: "+item.Ap,"Speed: "+item.Speed,"Ability: "+item.Ability.Name,
+                "Durability: "+item.Durability});
         }
 
         private void option2_Click(object sender, EventArgs e)
         {
             if (curr_event == 0)
             {
-                user.set_inventory(all_items.get_item(3), 0);
+                user.set_inventory(all_items.get_item(2), 0);
                 set(1);
             }
         }
@@ -140,7 +113,7 @@ namespace oofgates
         {
             if (curr_event == 0)
             {
-                user.set_inventory(all_items.get_item(4), 0);
+                user.set_inventory(all_items.get_item(3), 0);
                 set(1);
             }
         }
@@ -160,12 +133,6 @@ namespace oofgates
             info_panel.Enabled = true;
 
         }
-
-        private void armor_label_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void back_button_Click(object sender, EventArgs e)
         {
             info_panel.Enabled = false;
@@ -192,7 +159,7 @@ namespace oofgates
 
         }
 
-        private void fight_button_Click(object sender, EventArgs e)
+        private void f_button1_Click(object sender, EventArgs e)
         {
 
         }
@@ -205,6 +172,22 @@ namespace oofgates
         private void f_button3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void option1_MouseHover(object sender, EventArgs e)
+        {
+            if (curr_event == 0)
+            {
+                init_item_info(option1, all_items.get_item(1));
+            }
+        }
+
+        private void option1_MouseLeave(object sender, EventArgs e)
+        {
+            if (curr_event == 0)
+            {
+                item_overview_panel.Visible = false;
+            }
         }
     }
 }

@@ -17,17 +17,17 @@ namespace oofgates.attributes
         }
         private void perform(player user,player enemy,item item)
         {
-            item.set_durability(item.get_durability()-1);
-            user.set_energy(user.get_energy()-item.get_ability().get_energy());
-            enemy.set_health(user.get_health()-item.get_ability().get_energy());
+            item.Durability--;
+            user.Energy = user.Energy-item.Ability.Energy;
+            enemy.Health = user.Health - item.Ability.get_total_damage(user,enemy);
         }
         private void bot_action(player bot,player enemy)
         {
             item curr_item=Main.all_items.get_item(1);
             foreach (item item in bot.get_inventory())
             {
-                if (bot.get_energy() >= item.get_ability().get_energy() && 
-                    item.get_ability().get_total_damage(bot,enemy)>curr_item.get_ability().get_total_damage(bot,enemy))
+                if (bot.Energy >= item.Ability.Energy && 
+                    item.Ability.get_total_damage(bot,enemy)>curr_item.Ability.get_total_damage(bot,enemy))
                 {
                     curr_item = item;
                 }

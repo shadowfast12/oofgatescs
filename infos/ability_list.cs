@@ -20,7 +20,7 @@ namespace oofgates.infos
             int num = 0;
             foreach (String it in System.IO.File.ReadLines(file))
             {
-                if (it.Equals("#"))
+                if (it.Contains("#"))
                 {
                     abilities.Add(num, new ability((String)info[0], (String)info[1], int.Parse((String)info[2]),
                         int.Parse((String)info[3]), double.Parse((String)info[4]), double.Parse((String)info[5])));
