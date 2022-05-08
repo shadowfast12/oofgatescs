@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace oofgates.attributes
 {
-    public class item
+    public class Item
     {
         public String Name
         {
@@ -36,12 +36,12 @@ namespace oofgates.attributes
         {
             get; set;
         }
-        public ability Ability
+        public Ability Ability
         {
             get; set;
         }
 
-        public item(String Name, int Ad, int Ap, int Speed, int Durability, int Ad_resist, int Ap_resist, ability Ability)
+        public Item(String Name, int Ad, int Ap, int Speed, int Durability, int Ad_resist, int Ap_resist, Ability Ability)
         {
             this.Name = Name;
             this.Ad = Ad;

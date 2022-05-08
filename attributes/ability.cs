@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace oofgates.attributes
 {
-    public class ability
+    public class Ability
     {
         //types: AP AD
         public string Name
@@ -17,7 +17,7 @@ namespace oofgates.attributes
         {
             get;set;
         }
-        public int Base_damage
+        public int BaseDamage
         {
             get;set;
         }
@@ -25,27 +25,31 @@ namespace oofgates.attributes
         {
             get;set;
         }
-        public double Ad_scale
+        public double AdScale
         {
             get;set;
         }
-        public double Ap_scale
+        public double ApScale
         {
             get;set;
         }
-        public ability(String Name, String Type,int Base_damage, int Energy, double Ad_scale,double Ap_scale)
+        public Ability(String Name, String Type,int BaseDamage, int Energy, double AdScale, double ApScale)
         {
             this.Name = Name;
             this.Type = Type;
             this.Energy = Energy;
-            this.Base_damage = Base_damage;
-            this.Ap_scale = Ap_scale;
-            this.Ad_scale = Ad_scale;
+            this.BaseDamage = BaseDamage;
+            this.AdScale = AdScale;
+            this.ApScale = ApScale;
         }
-        public int get_total_damage(player user,player enemy)
+        public int TotalDamage(Player user)
         {
-            return (int)Math.Floor(Base_damage + (user.Ad * Ad_scale) + (user.Ap*Ap_scale) - 
-                (enemy.Ad_resist+enemy.Ap_resist));
+            return (int)Math.Floor(BaseDamage + (user.Ad * AdScale) + (user.Ap * ApScale));
+        }
+        public int DamageOutput(Player user, Player enemy)
+        {
+            return (int)Math.Floor(BaseDamage + ((user.Ad * AdScale) - enemy.Ad_resist) +
+                ((user.Ap * ApScale) - enemy.Ap_resist));
         }
     }
 }

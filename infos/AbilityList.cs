@@ -8,21 +8,21 @@ using System.Threading.Tasks;
 
 namespace oofgates.infos
 {
-    public class ability_list
+    public class AbilityList
     {
-        private Dictionary<int, ability> abilities;
+        private Dictionary<int, Ability> abilities;
 
-        public ability_list(String file)
+        public AbilityList(String file)
         {
-            abilities = new Dictionary<int, ability>();
+            abilities = new Dictionary<int, Ability>();
             ArrayList info = new ArrayList();
-            //13
+
             int num = 0;
             foreach (String it in System.IO.File.ReadLines(file))
             {
                 if (it.Contains("#"))
                 {
-                    abilities.Add(num, new ability((String)info[0], (String)info[1], int.Parse((String)info[2]),
+                    abilities.Add(num, new Ability((String)info[0], (String)info[1], int.Parse((String)info[2]),
                         int.Parse((String)info[3]), double.Parse((String)info[4]), double.Parse((String)info[5])));
                     info.Clear();
                     num++;
@@ -36,7 +36,7 @@ namespace oofgates.infos
 
 
         }
-        public ability get_ability(int num)
+        public Ability GetAbility(int num)
         {
             return abilities[num];
         }

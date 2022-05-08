@@ -8,23 +8,23 @@ using System.Threading.Tasks;
 
 namespace oofgates.infos
 {
-    public class item_list
+    public class ItemList
     {
-        private Dictionary<int,item> items;
+        private Dictionary<int,Item> items;
         ArrayList info = new ArrayList();
 
-        public item_list(String file)
+        public ItemList(String file)
         {
-            items = new Dictionary<int,item>();
+            items = new Dictionary<int,Item>();
 
             int num = 0;
             foreach (String it in System.IO.File.ReadLines(file))
             {
-                if (it.Equals("#"))
+                if (it.Contains("#"))
                 {
-                    items.Add(num, new item((String)info[0], int.Parse((String)info[1]), int.Parse((String)info[2]),
+                    items.Add(num, new Item((String)info[0], int.Parse((String)info[1]), int.Parse((String)info[2]),
                         int.Parse((String)info[3]), int.Parse((String)info[4]), int.Parse((String)info[5]),
-                        int.Parse((String)info[6]),Main.all_abilities.get_ability(int.Parse((String)info[7]))));
+                        int.Parse((String)info[6]),Main.allAbilities.GetAbility(int.Parse((String)info[7]))));
                     info.Clear();
                     num++;
                 }
@@ -36,7 +36,7 @@ namespace oofgates.infos
             }
         }
 
-        public item get_item(int num)
+        public Item get_item(int num)
         {
             return items[num];
         } 

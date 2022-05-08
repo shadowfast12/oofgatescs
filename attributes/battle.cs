@@ -6,33 +6,40 @@ using System.Threading.Tasks;
 
 namespace oofgates.attributes
 {
-    public class battle
+    public class Battle
     {
-        player user, enemy;
-
-        public battle(player user,player enemy)
-        {
-            this.user = user;
-            this.enemy = enemy;
+        public Player User {
+            get;set;
         }
-        private void perform(player user,player enemy,item item)
+        public Player Enemy {
+            get;set;
+        }
+
+        public Battle(Player User, Player Enemy)
+        {
+            this.User = User;
+            this.Enemy = Enemy;
+        }
+        public String Perform(Player user, Player enemy,Item item)
         {
             item.Durability--;
             user.Energy = user.Energy-item.Ability.Energy;
-            enemy.Health = user.Health - item.Ability.get_total_damage(user,enemy);
+            enemy.Health = user.Health - item.Ability.DamageOutput(user,enemy);
+
+            return user.Name + "used " + item.Ability + " and dealt " + item.Ability.DamageOutput(user, enemy);
         }
-        private void bot_action(player bot,player enemy)
+        public void BotAction(Player bot, Player enemy)
         {
-            item curr_item=Main.all_items.get_item(1);
-            foreach (item item in bot.get_inventory())
+            Item curr_item=Main.allItems.get_item(1);
+            foreach (Item item in bot.get_inventory())
             {
                 if (bot.Energy >= item.Ability.Energy && 
-                    item.Ability.get_total_damage(bot,enemy)>curr_item.Ability.get_total_damage(bot,enemy))
+                    item.Ability.DamageOutput(bot,enemy)>curr_item.Ability.DamageOutput(bot,enemy))
                 {
                     curr_item = item;
                 }
             }
-            perform(bot,enemy,curr_item);
+            Perform(bot,enemy,curr_item);
         }
     }
 }

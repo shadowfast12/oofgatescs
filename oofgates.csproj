@@ -46,13 +46,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="attributes\ability.cs" />
-    <Compile Include="attributes\battle.cs" />
-    <Compile Include="attributes\player.cs" />
-    <Compile Include="attributes\item.cs" />
-    <Compile Include="infos\ability_list.cs" />
-    <Compile Include="infos\item_list.cs" />
-    <Compile Include="infos\players_list.cs" />
+    <Compile Include="attributes\Ability.cs" />
+    <Compile Include="attributes\Battle.cs" />
+    <Compile Include="attributes\Player.cs" />
+    <Compile Include="attributes\Item.cs" />
+    <Compile Include="func\Ui.cs" />
+    <Compile Include="infos\AbilityList.cs" />
+    <Compile Include="infos\ItemList.cs" />
+    <Compile Include="infos\PlayersList.cs" />
+    <Compile Include="main\Ibattle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="main\Ibattle.Designer.cs">
+      <DependentUpon>Ibattle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="main\Imain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="main\Imain.Designer.cs">
+      <DependentUpon>Imain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="main\Istats.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="main\Istats.Designer.cs">
+      <DependentUpon>Istats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="main\Iuserinfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="main\Iuserinfo.Designer.cs">
+      <DependentUpon>Iuserinfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="main\main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +86,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="main\Ibattle.resx">
+      <DependentUpon>Ibattle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="main\Imain.resx">
+      <DependentUpon>Imain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="main\Istats.resx">
+      <DependentUpon>Istats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="main\Iuserinfo.resx">
+      <DependentUpon>Iuserinfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="main\main.resx">
       <DependentUpon>main.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,5 +123,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
